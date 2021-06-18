@@ -1,20 +1,51 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">Open Trivia</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div id="container" *ngIf="!begin_game">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-img id="otd" src="https://opentdb.com/images/logo.png" class="ion-margin-bottom"></ion-img>
+    <ion-card>
+
+      <ion-card-header>
+        <ion-card-title>
+          Lancer une partie <ion-icon name="game-controller-a"></ion-icon>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label position="stacked">Votre pseudo</ion-label>
+          <ion-input type="text" [(ngModel)]="GameDataService.username" placeholder="Choisir un nom d'utilisateur ..."></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label class="ion-text-left">Difficulté</ion-label>
+          <ion-select id="diffi" class="ion-text-end" [(ngModel)]="GameDataService.difficulty_choice">
+            <ion-select-option *ngFor="let item of GameDataService.difficulties" [value]="item">
+              {{ item }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+    
+        <ion-item class="ion-text-center">
+          <ion-toggle id="save" [(ngModel)]="GameDataService.save"></ion-toggle>
+          <ion-label>Sauvegarder</ion-label>
+        </ion-item>
+
+      </ion-card-content>
+      <ion-button (click)="start()" expand="block"> Commencer </ion-button>
+    </ion-card>
+
   </div>
 </ion-content>

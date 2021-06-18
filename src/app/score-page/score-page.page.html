@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Votre score</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-title>
+        Score
+      </ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-chip class="ion-margin-start ion-margin-top">
+        <ion-avatar>
+          <img [src]="GameDataService.random_avatar">
+        </ion-avatar>
+        <ion-label>{{ GameDataService.username }}</ion-label>
+      </ion-chip>
+      <ion-text>
+        {{ getScoreString() }}
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-button
+    (click)="QuestionService.resetGame()"
+    [routerLink]="['/']"
+  >
+    Nouvelle partie
+  </ion-button>
+  
+</ion-content>

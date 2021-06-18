@@ -1,5 +1,7 @@
 {
   "name": "ChevalBlancDHenryQuatre",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
